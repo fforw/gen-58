@@ -165,8 +165,6 @@ function renderDebugFace(modes, face, drawNext = false, ids = false)
     
     ctx.save()
 
-    ctx.strokeStyle = "#fff"
-    ctx.lineWidth = 1
     ctx.beginPath()
 
     do
@@ -652,14 +650,16 @@ domready(
 
             console.log("MAP", pointMap)
 
-            // ctx.globalAlpha = 0.1
-            // ctx.globalAlpha = 1
+            ctx.strokeStyle = "rgba(255,255,255,0.08)"
+            faces.forEach( face => {
+                ctx.lineWidth = Math.ceil(Math.random() * 3)
+                renderDebugFace(modes, face)
+            })
             faces.forEach( face => {
                 renderStems(modes, face)
                 renderFlowers(modes, face, pollenA, pollenB)
             })
 
-            //faces.forEach( face => renderDebugFace(modes, face) )
 
         }
 
